@@ -1,0 +1,18 @@
+[package]
+name = "nifpga"
+version = "0.1.1"
+authors = ["David Taylor <david.baker.taylor@gmail.com>"]
+edition = "2018"
+description = "library for interfacing with NI RIO FPGAs"
+license = "MIT"
+repository = "https://github.com/dbtaylor/nifpga-rs"
+
+[dependencies]
+nifpga-sys = { version = "0.1.1", path = "../nifpga-sys" }
+nifpga-type-macro = { version = "0.1.1", path = "../nifpga-type-macro" }
+libc = "0.2.71"
+fehler = "1.0.0"
+
+[features]
+default = []
+static = ["nifpga-sys/static"]
