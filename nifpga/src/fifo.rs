@@ -32,12 +32,11 @@ impl<'a, T: Type> ReadFifo<'a, T> {
     }
 
     #[throws(NifpgaError)]
-    pub fn read(&self, data: &mut Vec<T>, num_elements: usize, timeout: u32) {
+    pub fn read(&self, data: &mut [T], timeout: u32) {
         T::read_fifo(
             self.session.handle,
             self.handle,
             data,
-            num_elements,
             timeout,
         )?
     }

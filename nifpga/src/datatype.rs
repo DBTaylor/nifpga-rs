@@ -23,8 +23,7 @@ pub trait Type: Sized {
     fn read_fifo(
         session: u32,
         fifo: u32,
-        data: &mut Vec<Self>,
-        num_elements: usize,
+        data: &mut [Self],
         timeout: u32,
     ) -> Result<usize, NifpgaError>;
 
@@ -98,20 +97,16 @@ impl Type for f32 {
     fn read_fifo(
         session: u32,
         fifo: u32,
-        data: &mut Vec<Self>,
-        num_elements: usize,
+        data: &mut [Self],
         timeout: u32,
     ) -> usize {
-        data.reserve(num_elements);
         let mut elements_remaining = 0;
-        let len = data.len();
         unsafe {
-            data.set_len(len + num_elements);
             nifpga_sys::read_fifo_f32(
                 session,
                 fifo,
-                data.as_mut_ptr().offset(len as isize),
-                num_elements,
+                data.as_mut_ptr(),
+                data.len(),
                 timeout,
                 &mut elements_remaining,
             )
