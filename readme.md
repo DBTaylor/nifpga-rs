@@ -49,10 +49,10 @@ fn main() -> Result<(), NifpgaError>{
         let( elements, _, _) = writer.acquire_elements(4, 1000)?;
         elements.slice.iter_mut().for_each(|el| {*el = 1.0});
     }
-
-    let mut read_buff = vec![];
+    
     //read 3 elements from the FIFO
-    reader.read(&mut read_buff, 3, 1000)?;
+    let mut read_buff = [0.0; 3];
+    reader.read(&mut read_buff, 1000)?;
     println!("{:?}", read_buff);
     unsafe{
         //acquire 3 elements in the host read buffer
