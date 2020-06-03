@@ -1,12 +1,14 @@
 nifpga-rs
 ===
 
-[On crates.io](https://crates.io/crates/nifpga)
-
 Interface to NI FPGAs via the C API
+
+[On crates.io](https://crates.io/crates/nifpga)
 
 Usage
 ---
+
+In Cargol.toml: ```nifpga = "0.1.2"```
 
 Any project using this library must also link NiFpga.c
 
