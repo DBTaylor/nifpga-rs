@@ -8,6 +8,10 @@ Usage
 
 Any project using this library must also link NiFpga.c
 
+The API this library provides uses control addresses and FIFO numbers. To create an API specific to your FPGA, use [nifpga-apigen](https://github.com/dbtaylor/nifpga-apigen).
+
+An example project can be found here: [https://github.com/dbtaylor/rio-rs-ex]
+
 ```rust
 extern crate nifpga;
 
