@@ -1,6 +1,8 @@
 nifpga-rs
 ===
 
+[On crates.io](https://crates.io/crates/nifpga)
+
 Interface to NI FPGAs via the C API
 
 Usage
